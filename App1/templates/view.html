@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 800px;
+        }
+        .header{
+            display: flex;
+            justify-content:space-between;
+            border: 1px solid black;
+            background-color: brown;
+        }
+        .links{
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn{
+            margin-top: 20px;
+            margin-right: 5px;
+            margin-left: 50px;
+            width: 70%;
+            height: 50%;
+        }
+        .position{
+            border: 1px black solid;
+            margin-top: 10px;
+            height: 100%;
+            text-align: center;
+        }
+        h3{
+            text-align: center;
+        }
+        
+        
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Job oppurtinity</h1>
+            <div class="links">
+                <button class="btn" type="button">
+                <a href="/">logout </a>
+                </button>
+                <button class="btn" type="button">
+                    <a href="/jobboard">jobboard </a>
+                    </button>
+            </div>
+        </div>
+        <h3>applied labours for this position</h3>
+        {%for labour in position.labours.all%}
+        <div class="position">
+            
+            <p>labour name:{{labour.name}}</p>
+            <p>labour address:{{labour.Address}}</p>
+            <p>labour number:{{labour.contact_num}}</p>
+            <P>labour skill:{{labour.skill}}</P>
+            <hr>
+        </div>
+        {%endfor%}
+    </div>
+    
+</body>
+</html>
+</body>
+</html>

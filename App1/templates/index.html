@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css' %}" >
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <style>
+        .container{
+            
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .header{
+            display: flex;
+            justify-content:space-between;
+            border: 1px solid black;
+            background-color: brown;
+        }
+        .links{
+            display: flex;
+            justify-content: space-between;
+        }
+        button{
+            margin-right: 5px;
+        }
+
+        .main{
+            margin-top: 20px;
+            width: 50%;
+            margin-right: auto;
+            margin-left: auto;
+            border: 2px solid black;
+        }
+        input{
+            margin: 10px;
+            
+        }
+        label{
+            margin-left: 10px;
+        }
+        h1{
+            margin-left: 10px;
+        }
+        .sub{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+        <h1>Job oppurtinity</h1>
+        <div class="links">
+            <button type="button">
+             <a href="/login">labour login </a>
+        
+            </button>
+            <button type="button">
+                <a href="/clogin">companies login</a>
+            </button>
+        </div>
+        </div>
+        <div class="main">
+            <h1>labour signup</h1>
+            <form action="/lsignup" method="post">
+                {% csrf_token %}
+                <div>
+                    <label>Name:
+                    </label>
+                    <input type="text" name="name">
+                </div>
+                <div>
+                    <label>age:
+                    </label>
+                    <input type="number" name="age">
+                </div>
+                <div>
+                    <label>Email
+                    </label>
+                    <input type="text" name="email">
+                </div>
+                <div>
+                    <label>Mobile.NO:
+                    </label>
+                    <input type="number" name="number">
+                </div>
+                <div>
+                    <label>Address 
+                    </label>
+                    <input type="text" name="Address">
+                </div>
+                <div>
+                    <label>password
+                    </label>
+                    <input type="password" name="password">
+                </div>
+                <div>
+                    <label>cpassword
+                    </label>
+                    <input type="password" name="cpassword">
+                </div>
+                <div>
+                    <label>skill
+                    </label>
+                    <input type="text" name="skill">
+                </div>
+                <input class="sub"   type="submit" name="signup" value="signin">
+                <a href="/cregister">Go to companies form</a>
+            </form>
+        </div>
+    </div>
+    {% if messages %}
+<ul class="messages">    
+    {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    {% endfor %}
+</ul>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            height:100%;
+        }
+        .header{
+            display: flex;
+            justify-content:space-between;
+            border: 1px solid black;
+            background-color: brown;
+        }
+        .links{
+            display: flex;
+            justify-content: space-between;
+        }
+        button{
+            margin-top: 20px;
+            margin-right: 5px;
+            margin-left: 50px;
+            width: 50%;
+            height: 10%;
+        }
+        .position{
+            border: 1px black solid;
+            margin-top: 10px;
+            height: 100%;
+        }
+        .main{
+            width:40%;
+            height: 100%;
+        }
+        
+        h3{
+            text-align: center;
+        }
+        .main_container{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            height: 100%;
+        }
+        .side{
+            border: 1px black solid;
+            margin-top: 10px;
+            height: 100%;
+            width: 40%;
+            align-self: flex-start;
+        }
+        .pos{
+            text-align: center;
+        }
+        .no1{
+            height: 2px;
+            color: black;
+        }
+        .lab{
+            text-align: center;
+
+        }
+        .btn{
+            height: 50%;
+            width:80%
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Job oppurtinity</h1>
+            <div class="links">
+                <button class="btn" type="button">
+                <a href="/">logout </a>
+                </button>
+                <button class="btn" type="button">
+                    <a href="/companypage">company page </a>
+                </button>
+            </div>
+        </div>
+        <div class="main_container">
+            <div class="main">
+                <div class="position">
+                    <h3>avaliable position
+                    </h3>
+                    <hr class="no1">
+                    {%for position in positions%}
+                    <div class="pos">
+                        <p>Name:<a href="/view/{{position.id}}">{{position.Name}}</a></p>
+                        <p>description:{{position.descriptions}}</p>
+                        <p>required skills:{{position.required_skills}}</p>
+                        <p>Added by :{{position.companies.Name}}</p>
+                        <p>Deadline:{{position.deadline}}</p>
+                        <form action="/apply/{{position.id}}" method="post">
+                            {% csrf_token %}
+                            <button>apply</button>
+                        </form>
+                        <hr>
+                    </div>
+                    {%endfor%}
+                </div>
+            </div>
+            <div class="side">
+                <h3>Avaliable labours</h3>
+                <hr>
+                {%for labour in labours%}
+                <div class="lab">
+                <p>name:{{labour.name}}</p>
+                <p>Address:{{labour.Address}}</p>
+                <p>Skill:{{labour.skill}}</p>
+                <p>contact_num:{{labour.contact_num}}</p>
+                <hr>
+                </div>
+                
+                {%endfor%}
+            </div>
+            
+        </div>
+
+    </div>
+    
+</body>
+</html>

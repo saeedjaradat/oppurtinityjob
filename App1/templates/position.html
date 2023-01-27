@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .header{
+            display: flex;
+            justify-content:space-between;
+            border: 1px solid black;
+            background-color: brown;
+            margin-bottom: 40px;
+        }
+        .links{
+            display: flex;
+            justify-content: space-between;
+        }
+        button{
+            margin-right: 5px;
+        }
+
+        .main{
+            margin-top: 20px;
+            width: 50%;
+            margin-right: auto;
+            margin-left: auto;
+            border: 2px solid black;
+        }
+        input{
+            margin: 10px;
+        }
+        label{
+            margin-left: 10px;
+        }
+        h1{
+            margin-left: 10px;
+        }
+        .sub{
+            background-color: blue;
+        }
+        form{
+            width: 400px;
+            margin: 0 auto;
+            border: 1px solid black;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Job oppurtinity</h1>
+            <div class="links">
+                <button type="button">
+                <a href="/">logout </a>
+                </button>
+                <button type="button">
+                    <a href="jobboard">jobboard </a>
+                    </button>
+            </div>
+        </div>
+        <form action="/addposition" method="post">
+            {% csrf_token %}
+            <div>
+                <label>Name:</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label>Description:</label>
+                <input type="text" name="description">
+            </div>
+            <div>
+                <label>required skill:</label>
+                <input type="text" name="skill">
+            </div>
+            <div>
+                <label>Deadline:</label>
+                <input type="datetime-local" name="date">
+            </div>
+            <button>Add position</button>
+           
+        </form>
+</body>
+</html>
